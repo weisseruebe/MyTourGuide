@@ -36,12 +36,12 @@ public class RecordRouteMapActivity extends MapActivity {
 		});
 		
 		initMap();
-		initLM();
-		addOverlay(); 
-		addTestData();
+		initLocationManager();
+		initRouteOverlay(); 
+		loadTour();
 	}
 	
-	private void initLM() {
+	private void initLocationManager() {
 		lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		LocationListener ll = new LocationListener() {
 			
@@ -66,7 +66,6 @@ public class RecordRouteMapActivity extends MapActivity {
 		GeoPoint gp = new GeoPoint((int)(location.getLatitude()*1E6), (int)(location.getLongitude()*1E6));
 		mapView.getController().animateTo(gp);	
 		mapView.invalidate();
-		//saveTour();
 	}
 
 	protected void addPoiAtUserLocation() {
@@ -94,17 +93,12 @@ public class RecordRouteMapActivity extends MapActivity {
 		}
 	}
 
-	protected void addOverlay() {
+	protected void initRouteOverlay() {
 		Drawable defaultMarker = this.getResources().getDrawable(R.drawable.placemark_circle);
 		tourOverlay = new TourOverlay(defaultMarker);
 		mapView.getOverlays().add(tourOverlay);
 	}
-	
-	protected void addTestData() {
-//		tourOverlay.addItem(new Poi((int)(52*1E6), (int)(13*1E6),"P"));
-		loadTour();
-	}
-	
+		
 	protected void initMap() {
 		mapView = (MapView) findViewById(R.id.mapview);
 		mapView.setBuiltInZoomControls(true);
