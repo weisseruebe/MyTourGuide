@@ -1,6 +1,7 @@
 package swe.semesterarbeit;
 
 import Model.Poi;
+import Model.Tour;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -54,12 +55,21 @@ public class RecordRouteMapActivity extends MapActivity {
 		tourOverlay.addItem(new Poi((int)(location.getLatitude()*1E6), (int)(location.getLongitude()*1E6), "Rec"));
 		mapView.getController().animateTo(gp);	
 		mapView.invalidate();
-		saveTour();
+		//saveTour();
 	}
 
 	private void saveTour() {
 		try {
 			tourOverlay.tour.save(getFilesDir().getAbsolutePath()+"/tour.xml");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void loadTour(){
+		try {
+			tourOverlay.setTour(Tour.load(getFilesDir().getAbsolutePath()+"/tour.xml"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +83,8 @@ public class RecordRouteMapActivity extends MapActivity {
 	}
 	
 	protected void addTestData() {
-		tourOverlay.addItem(new Poi((int)(52*1E6), (int)(13*1E6),"P"));
+//		tourOverlay.addItem(new Poi((int)(52*1E6), (int)(13*1E6),"P"));
+		loadTour();
 	}
 	
 	protected void initMap() {

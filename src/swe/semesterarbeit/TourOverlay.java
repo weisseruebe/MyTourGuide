@@ -35,4 +35,9 @@ public class TourOverlay extends ItemizedOverlay<OverlayItem> {
 		tour.poi.add(poi);
 		populate();
 	}
+
+	public void setTour(Tour tour) {
+		this.tour = tour;
+		populate();
+	}
 }
