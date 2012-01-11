@@ -125,4 +125,9 @@ public class RecordRouteMapActivity extends MapActivity {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	protected void onPause() {
+		super.onPause();
+		saveTour();
+	}
 }
