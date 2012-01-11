@@ -9,7 +9,15 @@
 		android:id="@+id/mapview_layout"
 		android:layout_width="fill_parent"
 		android:layout_height="100dp" 
-		/>
+		>
+
+		<Button
+		    android:id="@+id/btnRecord"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Record" />
+
+	</LinearLayout>
 		
 	<com.google.android.maps.MapView
 	    android:id="@+id/mapview"

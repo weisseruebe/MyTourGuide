@@ -1,7 +1,7 @@
 package swe.semesterarbeit;
 
-import Model.Poi;
-import Model.Tour;
+import swe.model.Poi;
+import swe.model.Tour;
 import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.GeoPoint;

@@ -1,13 +1,15 @@
 package swe.semesterarbeit;
 
-import Model.Poi;
-import Model.Tour;
+import swe.model.Poi;
+import swe.model.Tour;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -17,11 +19,21 @@ import com.google.android.maps.MyLocationOverlay;
 
 public class RecordRouteMapActivity extends MapActivity {
 	MapView mapView;
+	Button btnRecord;
 	private TourOverlay tourOverlay;
+	private LocationManager lm;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.recordroutemap_activity);
+		btnRecord = (Button) findViewById(R.id.btnRecord);
+		btnRecord.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				addPoiAtUserLocation();				
+			}
+		});
 		
 		initMap();
 		initLM();
@@ -30,7 +42,7 @@ public class RecordRouteMapActivity extends MapActivity {
 	}
 	
 	private void initLM() {
-		LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		LocationListener ll = new LocationListener() {
 			
 			@Override
@@ -52,12 +64,18 @@ public class RecordRouteMapActivity extends MapActivity {
 
 	protected void updateLocation(Location location) {
 		GeoPoint gp = new GeoPoint((int)(location.getLatitude()*1E6), (int)(location.getLongitude()*1E6));
-		tourOverlay.addItem(new Poi((int)(location.getLatitude()*1E6), (int)(location.getLongitude()*1E6), "Rec"));
 		mapView.getController().animateTo(gp);	
 		mapView.invalidate();
 		//saveTour();
 	}
 
+	protected void addPoiAtUserLocation() {
+		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		if (location != null) {
+			tourOverlay.addItem(new Poi((int) (location.getLatitude() * 1E6),(int) (location.getLongitude() * 1E6), "Rec"));
+		}
+	}
+	
 	private void saveTour() {
 		try {
 			tourOverlay.tour.save(getFilesDir().getAbsolutePath()+"/tour.xml");
