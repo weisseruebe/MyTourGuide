@@ -21,8 +21,6 @@ public class GridAdapter extends BaseAdapter {
     };
     private String[] btnTexts;
     
-    
-    
 	public GridAdapter(Context c) {
 		context = c;
 		layoutInflater = LayoutInflater.from(context);
@@ -76,6 +74,7 @@ public class GridAdapter extends BaseAdapter {
 				switch (position) {
 				case 0:	// "My Routes"
 					Intent intent_routes = new Intent(context, FileListActivity.class);
+					intent_routes.putExtra("folder", "/tours/");
 					context.startActivity(intent_routes);
 					break;
 					
