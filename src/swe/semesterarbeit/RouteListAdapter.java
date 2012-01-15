@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+
+
 public class RouteListAdapter extends ArrayAdapter<File> {
 	Context context;
 	int layoutID;
@@ -49,8 +51,10 @@ public class RouteListAdapter extends ArrayAdapter<File> {
 		}
 		@Override
 		public void onClick(View v) {
-			Intent intent = new Intent(context, RouteMapActivity.class);
+			Intent intent = new Intent(context, RecordRouteMapActivity.class);
+			intent.putExtra("tour", file.getAbsolutePath());
 			context.startActivity(intent);
+			
 		}
 	}
 	

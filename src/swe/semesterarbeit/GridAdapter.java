@@ -75,7 +75,7 @@ public class GridAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				switch (position) {
 				case 0:	// "My Routes"
-					Intent intent_routes = new Intent(context, MyRoutesActivity.class);
+					Intent intent_routes = new Intent(context, FileListActivity.class);
 					context.startActivity(intent_routes);
 					break;
 					
