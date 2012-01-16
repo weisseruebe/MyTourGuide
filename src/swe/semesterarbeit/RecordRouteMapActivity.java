@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import swe.model.Poi;
 import swe.model.Tour;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -89,7 +90,13 @@ public class RecordRouteMapActivity extends MapActivity {
 	protected void addPoiAtUserLocation() {
 		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		if (location != null) {
-			tourOverlay.addItem(new Poi((int) (location.getLatitude() * 1E6),(int) (location.getLongitude() * 1E6), "Rec"));
+			Poi poi  = new Poi((int) (location.getLatitude() * 1E6),(int) (location.getLongitude() * 1E6), "Rec");
+			
+			tourOverlay.addItem(poi);
+			
+			Intent intent = new Intent(this, EditPoiActivity.class);
+			intent.putExtra("poi", poi);
+			this.startActivity(intent);
 		}
 	}
 	
@@ -144,9 +151,7 @@ public class RecordRouteMapActivity extends MapActivity {
 		try {
 			File file = new File(getFilesDir()+"/tours/tour.xml");
 			if (!file.exists()){
-			
 				new File(new File(getFilesDir()+"/tours").getAbsolutePath()).mkdirs();
-				
 				file.createNewFile();
 			}
 			FileOutputStream fileOutputStream = new FileOutputStream(file);

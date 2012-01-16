@@ -19,23 +19,24 @@ public final class R {
         public static final int placemark_circle=0x7f020001;
     }
     public static final class id {
-        public static final int btnRecord=0x7f060006;
-        public static final int button=0x7f060000;
-        public static final int grid=0x7f060001;
-        public static final int mainlayout=0x7f060004;
-        public static final int mapview=0x7f060007;
-        public static final int mapview_layout=0x7f060005;
-        public static final int mapview_layout_down=0x7f060008;
-        public static final int text1=0x7f060002;
-        public static final int text2=0x7f060003;
+        public static final int btnRecord=0x7f060007;
+        public static final int button=0x7f060001;
+        public static final int grid=0x7f060002;
+        public static final int mainlayout=0x7f060005;
+        public static final int mapview=0x7f060008;
+        public static final int mapview_layout=0x7f060006;
+        public static final int mapview_layout_down=0x7f060009;
+        public static final int poidata=0x7f060000;
+        public static final int text1=0x7f060003;
+        public static final int text2=0x7f060004;
     }
     public static final class layout {
-        public static final int gridlayout=0x7f030000;
-        public static final int main_activity=0x7f030001;
-        public static final int myroutes_listactivity=0x7f030002;
-        public static final int myroutes_listitem=0x7f030003;
-        public static final int recordroutemap_activity=0x7f030004;
-        public static final int routemap_activity=0x7f030005;
+        public static final int editpoiactivity=0x7f030000;
+        public static final int gridlayout=0x7f030001;
+        public static final int main_activity=0x7f030002;
+        public static final int myroutes_listactivity=0x7f030003;
+        public static final int myroutes_listitem=0x7f030004;
+        public static final int recordroutemap_activity=0x7f030005;
         public static final int userpreferences=0x7f030006;
     }
     public static final class string {
