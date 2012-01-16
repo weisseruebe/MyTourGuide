@@ -54,7 +54,6 @@ public class RouteListAdapter extends ArrayAdapter<File> {
 			Intent intent = new Intent(context, RecordRouteMapActivity.class);
 			intent.putExtra("tour", file.getAbsolutePath());
 			context.startActivity(intent);
-			
 		}
 	}
 	
