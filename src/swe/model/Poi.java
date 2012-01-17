@@ -11,7 +11,7 @@ import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-//TODO strict
+//TODO strict in mTL
 @Root(strict=false)
 public class Poi implements Serializable{
 
@@ -25,14 +25,13 @@ public class Poi implements Serializable{
 	public Integer lon;
 	@Attribute
 	public String name;
-	//TODO in Profil
+	//TODO required in Profil
 	@Attribute(required=false)
 	public String description;
 
 	public Poi() {
 		super();
 	}
-
 
 	public Poi(int lat, int lon, String name) {
 		super();

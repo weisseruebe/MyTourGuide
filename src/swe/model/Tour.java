@@ -11,7 +11,7 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
-
+//TODO strict abbilden in MTL
 @Root(strict=false)
 public class Tour implements Serializable  {
 
@@ -20,6 +20,7 @@ public class Tour implements Serializable  {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	//TODO initialisieren in MTL
 	@Attribute
 	public String name = "";
 	@ElementList
