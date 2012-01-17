@@ -17,6 +17,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,13 +28,14 @@ import com.google.android.maps.MyLocationOverlay;
 
 
 public class RecordRouteMapActivity extends MapActivity {
-	MapView mapView;
-	Button btnRecord;
+	private MapView mapView;
+	private Button btnRecord;
 	private TourOverlay tourOverlay;
 	private LocationManager lm;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d("Record", "onCreate");
 		setContentView(R.layout.recordroutemap_activity);
 		btnRecord = (Button) findViewById(R.id.btnRecord);
 		btnRecord.setOnClickListener(new View.OnClickListener() {
@@ -47,17 +49,22 @@ public class RecordRouteMapActivity extends MapActivity {
 		initMap();
 		initLocationManager();
 		initRouteOverlay(); 
+		
 		try {
-			String tour = getIntent().getStringExtra("tour");
-			if (tour!=null){
-				FileInputStream fileInputStream = new FileInputStream(tour);
+			String tourFile = getIntent().getStringExtra("tour");
+			if (tourFile!=null){
+				FileInputStream fileInputStream = new FileInputStream(tourFile);
 				loadTour(fileInputStream);
-			}
-			
+			}	
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void onDestroy(){
+		super.onDestroy();
+
 	}
 	
 	private void initLocationManager() {
@@ -91,12 +98,19 @@ public class RecordRouteMapActivity extends MapActivity {
 		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		if (location != null) {
 			Poi poi  = new Poi((int) (location.getLatitude() * 1E6),(int) (location.getLongitude() * 1E6), "Rec");
-			
-			tourOverlay.addItem(poi);
-			
 			Intent intent = new Intent(this, EditPoiActivity.class);
 			intent.putExtra("poi", poi);
-			this.startActivity(intent);
+			this.startActivityForResult(intent,123);
+		}
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data){
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == RESULT_OK){
+			Poi result = (Poi) data.getSerializableExtra("poi");
+			Log.d("RecordRouteMap","RES "+result.name);
+			tourOverlay.addItem(result);
+			
 		}
 	}
 	
@@ -155,7 +169,6 @@ public class RecordRouteMapActivity extends MapActivity {
 				file.createNewFile();
 			}
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
-			
 			saveTour(fileOutputStream);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
