@@ -22,11 +22,11 @@
         android:background="#000000"
         android:text="No POI"
         android:textColor="@android:color/white" />
-
+
     <Button
         android:id="@+id/btnSavePoi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/save" />
 
 </LinearLayout>

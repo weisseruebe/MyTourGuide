@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingLeft="8dp"
     android:paddingRight="8dp" >
-
+
     <EditText
         android:id="@+id/editTextTourName"
         android:layout_width="match_parent"
@@ -14,19 +14,16 @@
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/tourdata"
+    <EditText
+        android:id="@+id/editTextTourDetails"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_weight="0.03"
-        android:background="#000000"
-        android:text="No POI"
-        android:textColor="@android:color/white" />
-
+        android:layout_height="wrap_content"
+        android:layout_weight="0.57" />
+
     <Button
         android:id="@+id/btnSaveTour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/save" />
 
 </LinearLayout>

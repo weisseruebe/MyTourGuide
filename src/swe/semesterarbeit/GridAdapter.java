@@ -81,8 +81,7 @@ public class GridAdapter extends BaseAdapter {
 					
 				case 1:	// "Record new Route"
 					Intent intent_rec = new Intent(context, EditTourActivity.class);
-					((Activity)context).startActivityForResult(intent_rec, 123);
-//					context.startActivityForResult(intent_rec);
+					((Activity)context).startActivityForResult(intent_rec, MainActivity.REQUESTTOUR);
 					break;
 					
 				case 2:	// "Settings"

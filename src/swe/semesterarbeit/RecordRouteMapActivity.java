@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import swe.model.Poi;
 import swe.model.Tour;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -19,11 +20,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
+import com.google.android.maps.OverlayItem;
 
 
 public class RecordRouteMapActivity extends MapActivity {
@@ -120,7 +123,7 @@ public class RecordRouteMapActivity extends MapActivity {
 	
 	protected void initRouteOverlay() {
 		Drawable defaultMarker = this.getResources().getDrawable(R.drawable.placemark_circle);
-		tourOverlay = new TourOverlay(defaultMarker);
+		tourOverlay = new TourOverlay(this,defaultMarker);
 		mapView.getOverlays().add(tourOverlay);
 	}
 		

@@ -3,14 +3,14 @@ package swe.semesterarbeit;
 import java.io.File;
 
 import swe.model.Tour;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.GridView;
 
 public class MainActivity extends Activity {
+	public static final int REQUESTTOUR = 1;
+	
 	private GridView gridView;
 
 	/** Called when the activity is first created. */
@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK){
 			switch (requestCode) {
-			case 123:
+			case REQUESTTOUR:
 				Tour result = (Tour) data.getSerializableExtra("tour");
 				if (result != null){
 					Intent intent = new Intent(this,RecordRouteMapActivity.class);

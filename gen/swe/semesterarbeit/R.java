@@ -24,6 +24,7 @@ public final class R {
         public static final int btnSaveTour=0x7f060005;
         public static final int button=0x7f060006;
         public static final int editTextPoiName=0x7f060000;
+        public static final int editTextTourDetails=0x7f060004;
         public static final int editTextTourName=0x7f060003;
         public static final int grid=0x7f060007;
         public static final int mainlayout=0x7f06000a;
@@ -32,7 +33,6 @@ public final class R {
         public static final int text1=0x7f060008;
         public static final int text2=0x7f060009;
         public static final int textViewTourName=0x7f06000b;
-        public static final int tourdata=0x7f060004;
     }
     public static final class layout {
         public static final int editpoiactivity=0x7f030000;
@@ -57,5 +57,6 @@ public final class R {
         /**  Preferences 
          */
         public static final int pref_title=0x7f050006;
+        public static final int save=0x7f05000a;
     }
 }

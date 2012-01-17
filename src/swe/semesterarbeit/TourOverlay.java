@@ -2,6 +2,8 @@ package swe.semesterarbeit;
 
 import swe.model.Poi;
 import swe.model.Tour;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.GeoPoint;
@@ -11,9 +13,11 @@ import com.google.android.maps.OverlayItem;
 public class TourOverlay extends ItemizedOverlay<OverlayItem> {
 
 	Tour tour = new Tour();
+	private Context context;
 	
-	public TourOverlay(Drawable defaultMarker) {
+	public TourOverlay(Context c, Drawable defaultMarker) {
 		super(boundCenterBottom(defaultMarker));
+		this.context = c;
 	}
 
 	private OverlayItem poiToItem(Poi poi){
@@ -39,5 +43,14 @@ public class TourOverlay extends ItemizedOverlay<OverlayItem> {
 	public void setTour(Tour tour) {
 		this.tour = tour;
 		populate();
+	}
+	
+	protected boolean onTap(int index) {
+		Poi item = tour.poi.get(index);
+		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+		dialog.setTitle(item.name);
+		dialog.setMessage("Poi");
+		dialog.show();
+		return true;
 	}
 }

@@ -14,5 +14,6 @@
     <string name="fs_title">Font Size</string>
     <string name="fs_sum">Change the font size of the App</string>
     <string name="addPoi">Add POI</string>
+    <string name="save">Save</string>
     
 </resources>
