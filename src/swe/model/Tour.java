@@ -12,7 +12,7 @@ import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-@Root
+@Root(strict=false)
 public class Tour implements Serializable  {
 
 	

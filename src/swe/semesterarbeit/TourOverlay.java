@@ -49,7 +49,9 @@ public class TourOverlay extends ItemizedOverlay<OverlayItem> {
 		Poi item = tour.poi.get(index);
 		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
 		dialog.setTitle(item.name);
-		dialog.setMessage("Poi");
+		if (item.description != null){
+			dialog.setMessage(item.description);
+		}
 		dialog.show();
 		return true;
 	}

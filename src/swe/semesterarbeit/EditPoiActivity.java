@@ -29,7 +29,7 @@ public class EditPoiActivity extends Activity {
 		String lat = poi.lat+"";
 		String lon = poi.lon+"";
 		
-		textPoiData.setText(poi.name+"\n"+lat+"\n"+lon);
+		textPoiData.setText(lat+"\n"+lon);
 		Button btnSavePos = (Button) findViewById(R.id.btnSavePoi);
 		btnSavePos.setOnClickListener(new View.OnClickListener() {
 			
@@ -40,13 +40,13 @@ public class EditPoiActivity extends Activity {
 		});
 	}
 	
-	
-	
 	public void end(){
 		EditText editPoi = (EditText) findViewById(R.id.editTextPoiName);
+		EditText editPoiDesc = (EditText) findViewById(R.id.editTextPoiDesc);
 		Poi poi = (Poi)getIntent().getSerializableExtra("poi");
 		Intent result = new Intent();
 		poi.name = editPoi.getText().toString();
+		poi.description = editPoiDesc.getText().toString();
 		result.putExtra("poi", poi);
 		setResult(RESULT_OK,result);
 		finish();
