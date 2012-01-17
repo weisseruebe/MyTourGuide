@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MainActivity!</string>
+    <string name="hello">MyTourguide</string>
     <string name="app_name">MyTourguide</string>
     
     <string name="btn_routes">My Routes</string>
@@ -13,5 +13,6 @@
     <string name="pref_title">App Settings</string>
     <string name="fs_title">Font Size</string>
     <string name="fs_sum">Change the font size of the App</string>
+    <string name="addPoi">Add POI</string>
     
 </resources>

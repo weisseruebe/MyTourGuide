@@ -1,11 +1,9 @@
 package swe.semesterarbeit;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 import swe.model.Poi;
@@ -20,6 +18,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -31,12 +30,14 @@ public class RecordRouteMapActivity extends MapActivity {
 	private MapView mapView;
 	private Button btnRecord;
 	private TourOverlay tourOverlay;
+	private TextView textView;
 	private LocationManager lm;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d("Record", "onCreate");
 		setContentView(R.layout.recordroutemap_activity);
+		textView = (TextView)findViewById(R.id.textViewTourName);
 		btnRecord = (Button) findViewById(R.id.btnRecord);
 		btnRecord.setOnClickListener(new View.OnClickListener() {
 			
@@ -53,8 +54,8 @@ public class RecordRouteMapActivity extends MapActivity {
 		Tour tour = (Tour) getIntent().getSerializableExtra("tour");
 		if (tour!=null){
 			tourOverlay.setTour(tour);
+			textView.setText(tour.name);
 		}
-
 	}
 	
 	public void onDestroy(){
