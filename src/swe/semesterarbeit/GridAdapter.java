@@ -1,5 +1,6 @@
 package swe.semesterarbeit;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -79,8 +80,9 @@ public class GridAdapter extends BaseAdapter {
 					break;
 					
 				case 1:	// "Record new Route"
-					Intent intent_rec = new Intent(context, RecordRouteMapActivity.class);
-					context.startActivity(intent_rec);
+					Intent intent_rec = new Intent(context, EditTourActivity.class);
+					((Activity)context).startActivityForResult(intent_rec, 123);
+//					context.startActivityForResult(intent_rec);
 					break;
 					
 				case 2:	// "Settings"

@@ -50,16 +50,11 @@ public class RecordRouteMapActivity extends MapActivity {
 		initLocationManager();
 		initRouteOverlay(); 
 		
-		try {
-			String tourFile = getIntent().getStringExtra("tour");
-			if (tourFile!=null){
-				FileInputStream fileInputStream = new FileInputStream(tourFile);
-				loadTour(fileInputStream);
-			}	
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Tour tour = (Tour) getIntent().getSerializableExtra("tour");
+		if (tour!=null){
+			tourOverlay.setTour(tour);
 		}
+
 	}
 	
 	public void onDestroy(){
@@ -110,7 +105,6 @@ public class RecordRouteMapActivity extends MapActivity {
 			Poi result = (Poi) data.getSerializableExtra("poi");
 			Log.d("RecordRouteMap","RES "+result.name);
 			tourOverlay.addItem(result);
-			
 		}
 	}
 	
@@ -123,16 +117,6 @@ public class RecordRouteMapActivity extends MapActivity {
 		}
 	}
 	
-	private void loadTour(InputStream stream){
-		try {
-			Tour tour = Tour.load(stream);
-			tourOverlay.setTour(tour);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	protected void initRouteOverlay() {
 		Drawable defaultMarker = this.getResources().getDrawable(R.drawable.placemark_circle);
 		tourOverlay = new TourOverlay(defaultMarker);
@@ -163,9 +147,8 @@ public class RecordRouteMapActivity extends MapActivity {
 	protected void onPause() {
 		super.onPause();
 		try {
-			File file = new File(getFilesDir()+"/tours/tour.xml");
+			File file = new File(getFilesDir()+"/tours/"+tourOverlay.tour.name+".xml");
 			if (!file.exists()){
-				new File(new File(getFilesDir()+"/tours").getAbsolutePath()).mkdirs();
 				file.createNewFile();
 			}
 			FileOutputStream fileOutputStream = new FileOutputStream(file);

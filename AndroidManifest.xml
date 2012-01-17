@@ -28,6 +28,7 @@
         <activity android:name=".RecordRouteMapActivity"></activity>
         <activity android:name=".UserPreferences"></activity>
         <activity android:name="EditPoiActivity"></activity>
+        <activity android:name="EditTourActivity"></activity>
     </application>
 
 </manifest>

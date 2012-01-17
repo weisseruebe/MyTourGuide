@@ -1,6 +1,10 @@
 package swe.semesterarbeit;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import swe.model.Tour;
 
 import android.content.Context;
 import android.content.Intent;
@@ -52,7 +56,19 @@ public class RouteListAdapter extends ArrayAdapter<File> {
 		@Override
 		public void onClick(View v) {
 			Intent intent = new Intent(context, RecordRouteMapActivity.class);
-			intent.putExtra("tour", file.getAbsolutePath());
+			
+			try {
+				FileInputStream fileInputStream = new FileInputStream(file.getAbsolutePath());
+				Tour tour = Tour.load(fileInputStream);
+				intent.putExtra("tour", tour);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			context.startActivity(intent);
 		}
 	}
