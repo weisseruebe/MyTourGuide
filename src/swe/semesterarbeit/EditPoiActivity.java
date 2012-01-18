@@ -17,19 +17,33 @@ import android.widget.TextView;
  */
 
 public class EditPoiActivity extends Activity {
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.editpoiactivity);
-		Intent intent = getIntent();
-		
+
 		/* Fuellen per Hand */
-//		TextView textPoiData = (TextView) findViewById(R.id.lat);
-//		double lat = intent.getDoubleExtra("lat",0);
-//		double lon = intent.getDoubleExtra("lon",0);
-//		String latString = Location.convert(lat,Location.FORMAT_DEGREES);
-//		String lonString = Location.convert(lon,Location.FORMAT_DEGREES);
+		//		TextView textPoiData = (TextView) findViewById(R.id.lat);
+		//		double lat = intent.getDoubleExtra("lat",0);
+		//		double lon = intent.getDoubleExtra("lon",0);
+		//		String latString = Location.convert(lat,Location.FORMAT_DEGREES);
+		//		String lonString = Location.convert(lon,Location.FORMAT_DEGREES);
+
+		autoFillWidgets();
+		
+		Button btnSavePos = (Button) findViewById(R.id.btnSavePoi);
+		btnSavePos.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				end();				
+			}
+		});
+	}
+
+	private void autoFillWidgets() {
+		Intent intent = getIntent();
 
 		/* Automatisch fuellen */
 		for (String key:intent.getExtras().keySet()){
@@ -39,30 +53,23 @@ public class EditPoiActivity extends Activity {
 				if (view instanceof TextView){
 					((TextView) view).setText(intent.getExtras().get(key).toString());
 				}
+				if (view instanceof EditText){
+					((EditText)view).setText(intent.getExtras().get(key).toString());
+				}
 			}
 		}
-		
-		Button btnSavePos = (Button) findViewById(R.id.btnSavePoi);
-		btnSavePos.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				end();				
-			}
-		});
 	}
-	
+
 	public void end(){
 		EditText poiName = (EditText) findViewById(R.id.editTextPoiName);
 		EditText poiDesc = (EditText) findViewById(R.id.editTextPoiDesc);
-	
+
 		Intent result = getIntent();
 		result.putExtra("name",poiName.getText().toString());
 		result.putExtra("desc",poiDesc.getText().toString());
-		
+
 		setResult(RESULT_OK,result);
 		finish();
 	}
-	
-	
+
 }
