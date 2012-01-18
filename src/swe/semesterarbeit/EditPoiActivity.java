@@ -1,8 +1,8 @@
 package swe.semesterarbeit;
 
-import swe.model.Poi;
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,14 +22,18 @@ public class EditPoiActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Poi poi = (Poi)getIntent().getSerializableExtra("poi");
 		setContentView(R.layout.editpoiactivity);
-
-		TextView textPoiData = (TextView) findViewById(R.id.poidata);
-		String lat = poi.lat+"";
-		String lon = poi.lon+"";
+		Intent intent = getIntent();
 		
-		textPoiData.setText(lat+"\n"+lon);
+		/* Fuellen */
+		TextView textPoiData = (TextView) findViewById(R.id.poidata);
+		double lat = intent.getDoubleExtra("lat",0);
+		double lon = intent.getDoubleExtra("lon",0);
+		String latString = Location.convert(lat,Location.FORMAT_DEGREES);
+		String lonString = Location.convert(lon,Location.FORMAT_DEGREES);
+		
+		textPoiData.setText(latString+"\n"+lonString);
+		
 		Button btnSavePos = (Button) findViewById(R.id.btnSavePoi);
 		btnSavePos.setOnClickListener(new View.OnClickListener() {
 			
@@ -41,13 +45,13 @@ public class EditPoiActivity extends Activity {
 	}
 	
 	public void end(){
-		EditText editPoi = (EditText) findViewById(R.id.editTextPoiName);
-		EditText editPoiDesc = (EditText) findViewById(R.id.editTextPoiDesc);
-		Poi poi = (Poi)getIntent().getSerializableExtra("poi");
-		Intent result = new Intent();
-		poi.name = editPoi.getText().toString();
-		poi.description = editPoiDesc.getText().toString();
-		result.putExtra("poi", poi);
+		EditText poiName = (EditText) findViewById(R.id.editTextPoiName);
+		EditText poiDesc = (EditText) findViewById(R.id.editTextPoiDesc);
+	
+		Intent result = getIntent();
+		result.putExtra("name",poiName.getText().toString());
+		result.putExtra("desc",poiDesc.getText().toString());
+		
 		setResult(RESULT_OK,result);
 		finish();
 	}

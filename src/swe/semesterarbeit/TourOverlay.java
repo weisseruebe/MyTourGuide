@@ -21,7 +21,7 @@ public class TourOverlay extends ItemizedOverlay<OverlayItem> {
 	}
 
 	private OverlayItem poiToItem(Poi poi){
-		GeoPoint gp = new GeoPoint(poi.lat, poi.lon);
+		GeoPoint gp = new GeoPoint((int)(poi.lat * 1E6), (int)(poi.lon  * 1E6));
 		return new OverlayItem(gp, poi.name, "Poi");
 	}
 	

@@ -19,10 +19,11 @@ public class Poi implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	//TODO Datentyp nach Double
 	@Element
-	public Integer lat;
+	public Double lat;
 	@Element
-	public Integer lon;
+	public Double lon;
 	@Attribute
 	public String name;
 	//TODO required in Profil
@@ -33,13 +34,13 @@ public class Poi implements Serializable{
 		super();
 	}
 
-	public Poi(int lat, int lon, String name) {
+	//TODO erzeugen
+	public Poi(double lat, double lon, String name) {
 		super();
 		this.lat = lat;
 		this.lon = lon;
 		this.name = name;
 	}
-
 
 	public void save(OutputStream stream) throws Exception{
 		Serializer serializer = new Persister();

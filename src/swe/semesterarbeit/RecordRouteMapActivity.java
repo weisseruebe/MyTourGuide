@@ -15,7 +15,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,7 +34,6 @@ public class RecordRouteMapActivity extends MapActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.d("Record", "onCreate");
 		setContentView(R.layout.recordroutemap_activity);
 		textView = (TextView)findViewById(R.id.textViewTourName);
 		btnRecord = (Button) findViewById(R.id.btnRecord);
@@ -93,9 +91,9 @@ public class RecordRouteMapActivity extends MapActivity {
 	protected void addPoiAtUserLocation() {
 		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		if (location != null) {
-			Poi poi  = new Poi((int) (location.getLatitude() * 1E6),(int) (location.getLongitude() * 1E6), "Rec");
 			Intent intent = new Intent(this, EditPoiActivity.class);
-			intent.putExtra("poi", poi);
+			intent.putExtra("lat", location.getLatitude());
+			intent.putExtra("lon", location.getLongitude());
 			this.startActivityForResult(intent,123);
 		}
 	}
@@ -103,9 +101,13 @@ public class RecordRouteMapActivity extends MapActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK){
-			Poi result = (Poi) data.getSerializableExtra("poi");
-			Log.d("RecordRouteMap","RES "+result.name);
-			tourOverlay.addItem(result);
+			double lat = data.getDoubleExtra("lat", 0);
+			double lon = data.getDoubleExtra("lon", 0);
+			String name = data.getStringExtra("name");
+			String desc = data.getStringExtra("desc");
+			Poi poi = new Poi(lat, lon, name);
+			poi.description = desc;
+			tourOverlay.addItem(poi);
 		}
 	}
 	

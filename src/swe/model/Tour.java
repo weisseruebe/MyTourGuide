@@ -15,7 +15,6 @@ import org.simpleframework.xml.core.Persister;
 @Root(strict=false)
 public class Tour implements Serializable  {
 
-	
 	/**
 	 * 
 	 */
@@ -40,12 +39,6 @@ public class Tour implements Serializable  {
 		return serializer.read(Tour.class,stream);
 	}
 	
-	public static void main(String[] args) {
-		Tour tour = new Tour();
-		tour.name = "a";
-		Poi poi = new Poi(1, 1, "b");
-		tour.poi.add(poi);
-		
-	}
+	
 
 }
