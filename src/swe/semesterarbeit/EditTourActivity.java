@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /***
  * Vorschlag für Modellierung:
@@ -32,8 +31,6 @@ public class EditTourActivity extends Activity {
 			}
 		});
 	}
-	
-	
 	
 	public void end(){
 		EditText editTour = (EditText) findViewById(R.id.editTextTourName);
