@@ -15,5 +15,7 @@
     <string name="fs_sum">Change the font size of the App</string>
     <string name="addPoi">Add POI</string>
     <string name="save">Save</string>
+    <string name="newtour">New Tour</string>
+    <string name="newpoi">New Poi</string>
     
 </resources>

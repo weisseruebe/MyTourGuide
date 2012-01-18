@@ -19,21 +19,23 @@ public final class R {
         public static final int placemark_circle=0x7f020001;
     }
     public static final class id {
-        public static final int btnRecord=0x7f06000e;
-        public static final int btnSavePoi=0x7f060003;
-        public static final int btnSaveTour=0x7f060006;
-        public static final int button=0x7f060007;
-        public static final int editTextPoiDesc=0x7f060001;
-        public static final int editTextPoiName=0x7f060000;
-        public static final int editTextTourDetails=0x7f060005;
-        public static final int editTextTourName=0x7f060004;
-        public static final int grid=0x7f060008;
-        public static final int mainlayout=0x7f06000b;
-        public static final int mapview=0x7f06000d;
-        public static final int poidata=0x7f060002;
-        public static final int text1=0x7f060009;
-        public static final int text2=0x7f06000a;
-        public static final int textViewTourName=0x7f06000c;
+        public static final int btnRecord=0x7f060010;
+        public static final int btnSavePoi=0x7f060005;
+        public static final int btnSaveTour=0x7f060008;
+        public static final int button=0x7f060009;
+        public static final int editTextPoiDesc=0x7f060002;
+        public static final int editTextPoiName=0x7f060001;
+        public static final int editTextTourDetails=0x7f060007;
+        public static final int editTextTourName=0x7f060006;
+        public static final int grid=0x7f06000a;
+        public static final int lat=0x7f060003;
+        public static final int lon=0x7f060004;
+        public static final int mainlayout=0x7f06000d;
+        public static final int mapview=0x7f06000f;
+        public static final int text1=0x7f06000b;
+        public static final int text2=0x7f06000c;
+        public static final int textView1=0x7f060000;
+        public static final int textViewTourName=0x7f06000e;
     }
     public static final class layout {
         public static final int editpoiactivity=0x7f030000;
@@ -55,6 +57,8 @@ public final class R {
         public static final int fs_sum=0x7f050008;
         public static final int fs_title=0x7f050007;
         public static final int hello=0x7f050000;
+        public static final int newpoi=0x7f05000c;
+        public static final int newtour=0x7f05000b;
         /**  Preferences 
          */
         public static final int pref_title=0x7f050006;

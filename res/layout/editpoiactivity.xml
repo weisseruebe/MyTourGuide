@@ -5,6 +5,13 @@
     android:orientation="vertical"
     android:paddingLeft="8dp"
     android:paddingRight="8dp" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/newpoi"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/editTextPoiName"
@@ -19,15 +26,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.05" />
-
+
     <TextView
-        android:id="@+id/poidata"
+        android:id="@+id/lat"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/lon"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_weight="0.03"
-        android:background="#000000"
-        android:text="No POI"
-        android:textColor="@android:color/white" />
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:text="TextView" />
 
     <Button
         android:id="@+id/btnSavePoi"

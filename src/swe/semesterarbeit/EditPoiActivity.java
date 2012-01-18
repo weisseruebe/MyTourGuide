@@ -2,7 +2,6 @@ package swe.semesterarbeit;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,14 +24,23 @@ public class EditPoiActivity extends Activity {
 		setContentView(R.layout.editpoiactivity);
 		Intent intent = getIntent();
 		
-		/* Fuellen */
-		TextView textPoiData = (TextView) findViewById(R.id.poidata);
-		double lat = intent.getDoubleExtra("lat",0);
-		double lon = intent.getDoubleExtra("lon",0);
-		String latString = Location.convert(lat,Location.FORMAT_DEGREES);
-		String lonString = Location.convert(lon,Location.FORMAT_DEGREES);
-		
-		textPoiData.setText(latString+"\n"+lonString);
+		/* Fuellen per Hand */
+//		TextView textPoiData = (TextView) findViewById(R.id.lat);
+//		double lat = intent.getDoubleExtra("lat",0);
+//		double lon = intent.getDoubleExtra("lon",0);
+//		String latString = Location.convert(lat,Location.FORMAT_DEGREES);
+//		String lonString = Location.convert(lon,Location.FORMAT_DEGREES);
+
+		/* Automatisch fuellen */
+		for (String key:intent.getExtras().keySet()){
+			int id = getResources().getIdentifier(key, "id", this.getPackageName());
+			View view = findViewById(id);
+			if (view!=null){
+				if (view instanceof TextView){
+					((TextView) view).setText(intent.getExtras().get(key).toString());
+				}
+			}
+		}
 		
 		Button btnSavePos = (Button) findViewById(R.id.btnSavePoi);
 		btnSavePos.setOnClickListener(new View.OnClickListener() {
