@@ -5,14 +5,14 @@
     android:orientation="vertical"
     android:paddingLeft="8dp"
     android:paddingRight="8dp" >
-
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/newpoi"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
     <EditText
         android:id="@+id/editTextPoiName"
         android:layout_width="match_parent"
@@ -20,27 +20,27 @@
 
         <requestFocus />
     </EditText>
-
+
     <EditText
         android:id="@+id/editTextPoiDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.05" />
-
+
     <TextView
         android:id="@+id/lat"
         android:layout_width="296dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.02"
         android:text="TextView" />
-
+
     <TextView
         android:id="@+id/lon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.01"
         android:text="TextView" />
-
+
     <Button
         android:id="@+id/btnSavePoi"
         android:layout_width="wrap_content"

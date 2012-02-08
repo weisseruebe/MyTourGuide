@@ -16,18 +16,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-
-
-public class RouteListAdapter extends ArrayAdapter<File> {
+public class FileListAdapter extends ArrayAdapter<File> {
 	Context context;
 	int layoutID;
-	File[] myRoutes;
+	File[] files;
 	
-	public RouteListAdapter(Context c, int textViewResourceId, File[] routes) {
-		super(c, textViewResourceId, routes);
+	public FileListAdapter(Context c, int textViewResourceId, File[] files) {
+		super(c, textViewResourceId, files);
 		context = c;
 		layoutID = textViewResourceId;
-		myRoutes = routes;
+		this.files = files;
 	}
 
 	@Override
@@ -36,9 +34,9 @@ public class RouteListAdapter extends ArrayAdapter<File> {
 		View view = inflater.inflate(layoutID, parent, false);
 		
 		TextView text1 = (TextView) view.findViewById(R.id.text1);
-		text1.setText(myRoutes[position].getName());
+		text1.setText(files[position].getName());
 		TextView text2 = (TextView) view.findViewById(R.id.text2);
-		text2.setText(myRoutes[position].getPath());
+		text2.setText(files[position].getPath());
 		
 		view.setOnClickListener(new OnListItemClickListener(position));
 		view.setOnLongClickListener(new OnListItemLongClickListener(position));
@@ -51,7 +49,7 @@ public class RouteListAdapter extends ArrayAdapter<File> {
 	private class OnListItemClickListener implements OnClickListener {
 		File file;
 		public OnListItemClickListener(int position) {
-			this.file = myRoutes[position];
+			this.file = files[position];
 		}
 		@Override
 		public void onClick(View v) {

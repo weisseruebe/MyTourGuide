@@ -42,10 +42,9 @@ public final class R {
         public static final int edittouractivity=0x7f030001;
         public static final int gridlayout=0x7f030002;
         public static final int main_activity=0x7f030003;
-        public static final int myroutes_listactivity=0x7f030004;
-        public static final int myroutes_listitem=0x7f030005;
-        public static final int recordroutemap_activity=0x7f030006;
-        public static final int userpreferences=0x7f030007;
+        public static final int myroutes_listitem=0x7f030004;
+        public static final int recordroutemap_activity=0x7f030005;
+        public static final int userpreferences=0x7f030006;
     }
     public static final class string {
         public static final int addPoi=0x7f050009;

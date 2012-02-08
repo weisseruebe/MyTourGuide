@@ -28,6 +28,7 @@ import com.google.android.maps.MyLocationOverlay;
 public class RecordRouteMapActivity extends MapActivity {
 	private MapView mapView;
 	private Button btnRecord;
+	//Modelling: StereoType Overlay
 	private TourOverlay tourOverlay;
 	private TextView textView;
 	private LocationManager lm;
@@ -36,6 +37,7 @@ public class RecordRouteMapActivity extends MapActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.recordroutemap_activity);
 		textView = (TextView)findViewById(R.id.textViewTourName);
+		//Modelling: StereoType Button
 		btnRecord = (Button) findViewById(R.id.btnRecord);
 		btnRecord.setOnClickListener(new View.OnClickListener() {
 			
@@ -44,9 +46,11 @@ public class RecordRouteMapActivity extends MapActivity {
 				addPoiAtUserLocation();				
 			}
 		});
-		
+		//Modelling: StereoType MapView
 		initMap();
+		//Modelling: StereoType LocationService
 		initLocationManager();
+		//Modelling: StereoType Overlay mit Name!
 		initRouteOverlay(); 
 		
 		Tour tour = (Tour) getIntent().getSerializableExtra("tour");
@@ -61,6 +65,7 @@ public class RecordRouteMapActivity extends MapActivity {
 
 	}
 	
+	//Modelling: StereoType LocationService
 	private void initLocationManager() {
 		lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		LocationListener ll = new LocationListener() {
@@ -81,7 +86,7 @@ public class RecordRouteMapActivity extends MapActivity {
 		};
 		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 100, ll);		
 	}
-
+	//Modelling: StereoType LocationService
 	protected void updateLocation(Location location) {
 		GeoPoint gp = new GeoPoint((int)(location.getLatitude()*1E6), (int)(location.getLongitude()*1E6));
 		mapView.getController().animateTo(gp);	
@@ -120,12 +125,14 @@ public class RecordRouteMapActivity extends MapActivity {
 		}
 	}
 	
+	//Modelling: StereoType Overlay mit Name
 	protected void initRouteOverlay() {
 		Drawable defaultMarker = this.getResources().getDrawable(R.drawable.placemark_circle);
 		tourOverlay = new TourOverlay(this,defaultMarker);
 		mapView.getOverlays().add(tourOverlay);
 	}
-		
+	
+	//Modelling: StereoType MapView
 	protected void initMap() {
 		mapView = (MapView) findViewById(R.id.mapview);
 		mapView.setBuiltInZoomControls(true);

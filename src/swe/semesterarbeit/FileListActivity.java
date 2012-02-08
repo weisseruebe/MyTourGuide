@@ -14,18 +14,16 @@ import android.os.Bundle;
  */
 
 public class FileListActivity extends ListActivity {
-
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		String subFolder = getIntent().getStringExtra("folder");
-		setContentView(R.layout.myroutes_listactivity);
 		
 		final File rootFolder = new File(getFilesDir().getAbsolutePath()+subFolder);
 		File[] routes = rootFolder.listFiles();
 		
-		RouteListAdapter adapter = new RouteListAdapter(this, R.layout.myroutes_listitem, routes);
+		FileListAdapter adapter = new FileListAdapter(this, R.layout.myroutes_listitem, routes);
 		setListAdapter(adapter);
 	}
 	
