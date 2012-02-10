@@ -19,9 +19,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
 		createTourFolder();
-		GridAdapter adapter = new GridAdapter(this);
+		SimpleGridAdapter adapter = new SimpleGridAdapter(this);
+//		GridAdapter adapter = new GridAdapter(this);
+		
 		gridView = (GridView) findViewById(R.id.grid);
 		gridView.setAdapter(adapter);
+		
 	}
 
 	private void createTourFolder() {
@@ -47,5 +50,4 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-
 }

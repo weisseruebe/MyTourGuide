@@ -36,27 +36,22 @@ public class GridAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return iconIDs.length;
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
 		return iconIDs[position];
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
 	// creates a new ImageView for each item referenced by the Adapter
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-
 		View gridView;
 		if (convertView == null) {
 			gridView = new View(context);
