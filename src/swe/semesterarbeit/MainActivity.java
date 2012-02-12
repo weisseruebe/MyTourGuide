@@ -10,6 +10,7 @@ import android.widget.GridView;
 
 public class MainActivity extends Activity {
 	public static final int REQUESTTOUR = 1;
+	public static final int REQUESTID1 = 0;
 	
 	private GridView gridView;
 

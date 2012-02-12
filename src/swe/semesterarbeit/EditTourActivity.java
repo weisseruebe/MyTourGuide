@@ -34,10 +34,14 @@ public class EditTourActivity extends Activity {
 	
 	public void end(){
 		EditText editTour = (EditText) findViewById(R.id.editTextTourName);
+		EditText editDesc = (EditText) findViewById(R.id.editTextTourDetails);
+		
 		Tour tour = new Tour();
 		Intent result = new Intent();
 		tour.name = editTour.getText().toString();
+		tour.description = editDesc.getText().toString();
 		result.putExtra("tour", tour);
+
 		setResult(RESULT_OK,result);
 		finish();
 	}

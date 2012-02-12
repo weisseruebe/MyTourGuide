@@ -29,9 +29,9 @@ public class SimpleGridAdapter extends BaseAdapter {
 		button1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent_routes = new Intent(context, FileListActivity.class);
-				intent_routes.putExtra("folder", "/tours/");
-				context.startActivity(intent_routes);
+				Intent intent_routes = new Intent(context, FileListActivity.class); //Activity ersetzen
+				intent_routes.putExtra("folder", "/tours/"); //Per Hand
+				((Activity)context).startActivityForResult(intent_routes, MainActivity.REQUESTID1); //ID erzeugen?
 			}
 		});
 		

@@ -38,6 +38,18 @@ public class FileListAdapter extends ArrayAdapter<File> {
 		TextView text2 = (TextView) view.findViewById(R.id.text2);
 		text2.setText(files[position].getPath());
 		
+		try {
+			Tour tour = Tour.load(new FileInputStream(files[position].getPath()));
+			if (tour.name.length()>0){
+				text1.setText(tour.name);
+			}
+			if (tour.description.length()>0){
+				text2.setText(tour.description);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
 		view.setOnClickListener(new OnListItemClickListener(position));
 		view.setOnLongClickListener(new OnListItemLongClickListener(position));
 		

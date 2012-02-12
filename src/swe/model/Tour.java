@@ -22,6 +22,9 @@ public class Tour implements Serializable  {
 	//TODO initialisieren in MTL
 	@Attribute
 	public String name = "";
+	@Attribute(required=false)
+	public String description = "";
+	
 	@ElementList
 	public List<Poi> poi = new ArrayList<Poi>();
 

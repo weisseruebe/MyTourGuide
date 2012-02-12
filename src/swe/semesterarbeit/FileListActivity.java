@@ -1,6 +1,7 @@
 package swe.semesterarbeit;
 
 import java.io.File;
+import java.io.FileFilter;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -21,7 +22,13 @@ public class FileListActivity extends ListActivity {
 		String subFolder = getIntent().getStringExtra("folder");
 		
 		final File rootFolder = new File(getFilesDir().getAbsolutePath()+subFolder);
-		File[] routes = rootFolder.listFiles();
+		File[] routes = rootFolder.listFiles(new FileFilter() {
+			
+			@Override
+			public boolean accept(File pathname) {
+				return (pathname.getName().endsWith("xml".toLowerCase()) | pathname.getName().endsWith("XML")); 
+			}
+		});
 		
 		FileListAdapter adapter = new FileListAdapter(this, R.layout.myroutes_listitem, routes);
 		setListAdapter(adapter);
